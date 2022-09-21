@@ -2,22 +2,25 @@ import React from 'react';
 import styled from "styled-components";
 
 const StyledButton = styled.div`
-  box-shadow: inset 0 1px 0 0 #ffffff;
-  background: #ededed linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+  box-shadow: ${props => props.theme === 'Light' ? 'inset 0 1px 0 0 #ffffff' : 'inset 0 1px 0 0 #2d2d2e'};
+  background: ${props => props.theme === 'Light' ? '#ededed' : '#2d2d2e'};
   border-radius: 17px;
-  border: 2px solid #dcdcdc;
+  border: ${props => props.theme === 'Light' ? '2px solid #dcdcdc' : '2px solid #2d2d2e'};
   display: inline-block;
   cursor: pointer;
-  color: #777777;
+  color: ${props => props.theme === 'Light' ? '#777777' : 'white'};
   font-family: Arial sans-serif;
   font-size: 15px;
   font-weight: bold;
-  padding: 16px 18px;
+  padding: 16px 20px;
   text-decoration: none;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: ${props => props.theme === 'Light' ? '0 1px 0 #ffffff' : '0 1px 0 #2d2d2e'};
 
   &:hover {
-    background: #dfdfdf linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background: ${props => props.theme === 'Light'
+            ? '#dfdfdf linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%)'
+            : '#4d4d4d linear-gradient(to bottom, #4d4d4d 5%, #4d4d4d 100%)'
+    };
   }
 
   &:active {

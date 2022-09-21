@@ -1,3 +1,3 @@
-import {ControlPanel} from "./ControlPanel";
+import {Settings} from "./Settings";
 
-export {ControlPanel};
+export {Settings};

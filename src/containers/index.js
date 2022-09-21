@@ -1,4 +1,4 @@
 import {AppRoutes} from "./AppRoutes";
-import {Calculator} from "./Calculator";
+import {CalculatorFC} from "./Calculator/CalculatorFC";
 
-export {AppRoutes, Calculator};
+export {AppRoutes, CalculatorFC};
