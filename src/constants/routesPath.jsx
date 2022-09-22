@@ -1,5 +1,5 @@
 export const PATH = {
-	home: '/',
-	settings: '/settings'
+	FC: '/',
+	CC: '/cc'
 }
 

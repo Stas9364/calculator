@@ -1,9 +1,19 @@
 import {connect} from "react-redux";
-import {addOperation, clearOperationList, isHistoryOpen} from "../../redux/historyReducer";
-import {Container, StyledCalculator} from "./styledComponents";
-import {ControlPanel, Display} from "../../components";
-import {Keypad} from "../../components/Keypad";
+import {StyledContainer, StyledCalculator} from "./styledComponents";
 import React from "react";
+import {DisplayCC} from "../../components/Display";
+import {KeypadCC} from "../../components/Keypad";
+import {ErrorBoundary} from "../../components";
+import {ControlPanelCC} from "../../components/ControlPanel";
+import {
+	addOperation,
+	clearOperationList,
+	isHistoryOpen,
+	operationSelector,
+	themeSelector,
+	themesSelector
+} from "../../redux";
+import {isOpenSelector} from "../../redux/selectors";
 
 export class CalculatorCC extends React.Component {
 	constructor(props) {
@@ -15,70 +25,109 @@ export class CalculatorCC extends React.Component {
 	}
 
 	onClickHandler = (el) => {
+		const expressions = /[.\-+/*]/
+		const lastNum = this.state.value[this.state.value.length - 1]
+		// try {
+			if (expressions.test(lastNum) && expressions.test(el)) {
 
-		try {
-			if (el.match(/[.\-+/*]/) && this.value[this.value.length - 1].match(/[.\-+/*]/)) {
+				this.setState({value: this.state.value.substring(0, this.state.value.length - 1) + el});
 				return;
 			}
 
-			if (this.value === '0' && el === '.') {
-				this.setState({value: this.value + el});
-			} else if (this.value === '0') {
+			if (this.state.value === '0' && el === '.') {
+				this.setState({value: this.state.value +el});
+			} else if (this.state.value === '0') {
+
 				this.setState({value: el});
 			} else {
-				this.setState({value: this.value + el});
+
+				this.setState({value: this.state.value +el});
 			}
 
-			if (el === '=') {
-				this.props.addOperation(this.value);
+			this.result(el);
 
-				let result = eval(this.value).toString();
-				if (result.includes('.')) {
-					this.setState(Number(result).toFixed(3));
+		// } catch (e) {
+		// 	console.log(e)
+		// 	//alert('Invalid expression');
+		// 	this.result(el, e);
+		// }
+	}
+
+	result(el, error = null) {
+		switch (el) {
+			case '=':
+				if (error) {
+					this.setState({value: ''});
 				} else {
-					this.setState({value: result});
+					let result = eval(this.state.value).toString();
+
+					if (result.includes('.') && result.split('.')[1].length > 2) {
+						this.setState(Number(result).toFixed(3));
+					} else {
+						this.setState({value: result});
+					}
+
+					this.props.addOperation(this.state.value);
 				}
-			}
+				break;
 
-			if (el === 'C') {
+			case 'C':
 				this.setState({value: '0'});
-			}
 
-			if (el === 'CE') {
-				let result = this.value.slice(0, this.value.length - 1);
-				if (!result) {
+				break;
+
+			case 'CE':
+				let res = this.state.value.slice(0, this.state.value.length - 1);
+				if (!res) {
 					this.setState({value: '0'});
 				} else {
-					this.setState({value: result});
+					this.setState({value: res});
 				}
-			}
-		} catch (e) {
-			console.log(e)
 		}
 	}
 
+	isHistoryOpenHandler = () => this.props.isHistoryOpen(!this.props.isOpen);
+
+	clearOperationListHandler = () => this.props.clearOperationList();
+
 	render() {
-
+		console.log(this.props.theme)
 		return (
-			<>
+			<ErrorBoundary>
 				<StyledCalculator>
-					<Container>
-						<Display val={this.value}/>
-						<Keypad onClickHandler={this.onClickHandler}/>
-					</Container>
+					<StyledContainer>
+						<DisplayCC
+							val={this.state.value}
+							theme={this.props.theme}
+						/>
+						<KeypadCC
+							onClickHandler={this.onClickHandler}
+							theme={this.props.theme}
+						/>
+					</StyledContainer>
 
-					<ControlPanel/>
+					<ControlPanelCC
+						theme={this.props.theme}
+						isOpen={this.props.isOpen}
+						operation={this.props.operation}
+						isHistoryOpenHandler={this.isHistoryOpenHandler}
+						clearOperationListHandler={this.clearOperationListHandler}
+					/>
 				</StyledCalculator>
-
-			</>
+			</ErrorBoundary>
 		)
 	}
 }
 
 const mapStateToProps = (state) => {
-	return {}
+	return {
+		theme: themeSelector(state),
+		themes: themesSelector(state),
+		operation: operationSelector(state),
+		isOpen: isOpenSelector(state)
+	}
 }
 
-export const Calc = connect(mapStateToProps,
+export default connect(mapStateToProps,
 	{addOperation, clearOperationList, isHistoryOpen}
 )(CalculatorCC);

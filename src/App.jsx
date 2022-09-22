@@ -1,15 +1,15 @@
-import {AppRoutes} from "./containers";
-import {Header} from "./components";
 import GlobalStyle from "./styles/globalStyles";
 import React from "react";
 import {useSelector} from "react-redux";
+import {themeSelector} from "./redux";
+import {Header} from "./components";
+import {AppRoutes} from "./screens";
 
 function App() {
-  const color = useSelector(state => state.settings.selectedTheme);
-
+  const theme = useSelector(themeSelector);
   return (
     <div className="App">
-      <GlobalStyle theme={color}/>
+      <GlobalStyle theme={theme}/>
       <Header/>
       <AppRoutes/>
     </div>

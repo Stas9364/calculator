@@ -1,10 +1,11 @@
 import React, {useState} from 'react';
-import {Display} from "../../components";
-import {Keypad} from "../../components/Keypad";
-import {ControlPanel} from "../../components";
 import {useDispatch} from "react-redux";
-import {addOperation} from "../../redux/historyReducer";
-import {Container, StyledCalculator} from "./styledComponents";
+import {addOperation} from "../../redux";
+import {ErrorBoundary} from "../../components";
+import {StyledCalculator, StyledContainer} from "./styledComponents";
+import {Keypad} from "../../components/Keypad";
+import {ControlPanel} from "../../components/ControlPanel";
+import {Display} from "../../components/Display";
 
 
 export const CalculatorFC = () => {
@@ -33,19 +34,26 @@ export const CalculatorFC = () => {
 			result(el);
 
 		} catch (e) {
-			console.log(e)
+			alert('Invalid expression');
+			result(el, e);
 		}
 	}
 
-	function result(el) {
+	function result(el, error = null) {
 		switch (el) {
 			case '=':
-				dispatch(addOperation(value));
-				let result = eval(value).toString();
-				if (result.includes('.') && result.split('.')[1].length > 2) {
-					setValue(Number(result).toFixed(3));
+				if (error) {
+					setValue('');
 				} else {
-					setValue(result);
+					let result = eval(value).toString();
+
+					if (result.includes('.') && result.split('.')[1].length > 2) {
+						setValue(Number(result).toFixed(3));
+					} else {
+						setValue(result);
+					}
+
+					dispatch(addOperation(value));
 				}
 				break;
 
@@ -64,14 +72,16 @@ export const CalculatorFC = () => {
 	}
 
 	return (
-		<StyledCalculator>
-			<Container>
-				<Display val={value}/>
-				<Keypad onClickHandler={onClickHandler}/>
-			</Container>
+		<ErrorBoundary>
+			<StyledCalculator>
+				<StyledContainer>
+					<Display val={value}/>
+					<Keypad onClickHandler={onClickHandler}/>
+				</StyledContainer>
 
-			<ControlPanel/>
-		</StyledCalculator>
+				<ControlPanel/>
+			</StyledCalculator>
+		</ErrorBoundary>
 	);
 };
 

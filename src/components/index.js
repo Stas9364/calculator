@@ -1,5 +1,4 @@
 import {Header} from "./Header";
-import {Display} from "./Display";
-import {ControlPanel} from "./ControlPanel";
+import {ErrorBoundary} from "./ErrorBoundary";
 
-export {Header, ControlPanel, Display};
+export {Header, ErrorBoundary};

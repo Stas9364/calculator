@@ -1,3 +1,3 @@
-import {Settings} from "./Settings";
+import {AppRoutes} from "./AppRoutes";
 
-export {Settings};
+export {AppRoutes};

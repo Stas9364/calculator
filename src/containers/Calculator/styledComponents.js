@@ -8,7 +8,7 @@ export const StyledCalculator = styled.div`
   grid-template-columns: 4fr 1fr;
 `
 
-export const Container = styled.div`
+export const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
 `

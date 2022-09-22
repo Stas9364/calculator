@@ -1,4 +1,6 @@
-import {AppRoutes} from "./AppRoutes";
 import {CalculatorFC} from "./Calculator/CalculatorFC";
+import CalculatorCC from "./Calculator/CalculatorCC";
+import {StyledCalculator} from "./Calculator/styledComponents";
+import {StyledContainer} from "./Calculator/styledComponents";
 
-export {AppRoutes, CalculatorFC};
+export {CalculatorFC, CalculatorCC, StyledContainer, StyledCalculator};

@@ -1,7 +1,5 @@
-import React from 'react';
 import styled from "styled-components";
-
-const StyledButton = styled.div`
+export const StyledButton = styled.div`
   box-shadow: ${props => props.theme === 'Light' ? 'inset 0 1px 0 0 #ffffff' : 'inset 0 1px 0 0 #2d2d2e'};
   background: ${props => props.theme === 'Light' ? '#ededed' : '#2d2d2e'};
   border-radius: 17px;
@@ -18,9 +16,9 @@ const StyledButton = styled.div`
 
   &:hover {
     background: ${props => props.theme === 'Light'
-            ? '#dfdfdf linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%)'
-            : '#4d4d4d linear-gradient(to bottom, #4d4d4d 5%, #4d4d4d 100%)'
-    };
+	? '#dfdfdf linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%)'
+	: '#4d4d4d linear-gradient(to bottom, #4d4d4d 5%, #4d4d4d 100%)'
+};
   }
 
   &:active {
@@ -28,10 +26,3 @@ const StyledButton = styled.div`
     top: 1px;
   }
 `
-
-export const Button = (props) => {
-	return (
-		<StyledButton {...props}/>
-	);
-};
-
