@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const StyledButton = styled.div`
+export const StyledButton = styled.button`
   box-shadow: ${props => props.theme === 'Light' ? 'inset 0 1px 0 0 #ffffff' : 'inset 0 1px 0 0 #2d2d2e'};
   background: ${props => props.theme === 'Light' ? '#ededed' : '#2d2d2e'};
   border-radius: 17px;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyledDisplay = styled.div`
   height: 100px;
-  background-color: ${props => props.theme === 'Light' ? '#e5e5e5' : '#444445'};
+  background-color: ${props => props.theme === 'Light' ? '#e5e5e5' : '#575757'};
   display: flex;
   justify-content: end;
   margin: 5px;

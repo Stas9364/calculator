@@ -13,6 +13,26 @@ const StyledHeader = styled.div`
 
 const StyledText = styled.h1`
 	color: ${props => props.theme === 'Light' ? '#2B3030' : '#D4D4D4'};
+	margin: 0 0 0 15px;
+	display: flex;
+	align-items: center;
+`
+
+const StyledNavLink = styled(NavLink)`
+  font-size: 25px;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: ${props => props.theme === 'Light' ? '#2B3030' : '#D4D4D4'};
+
+  &:hover {
+    color: #756b20;
+  }
+`
+
+const StyledLinkSelectContainer = styled.div`
+	display: flex;
+	align-items: center;
 `
 
 export const Header = () => {
@@ -28,15 +48,15 @@ export const Header = () => {
 			<StyledText theme={theme}>
 				Calculator App
 			</StyledText>
-			<div>
-				{/*<NavLink to={'/'}>Function</NavLink>*/}
-				<NavLink to={'/cc'}>Class</NavLink>
-				<div>
+			<StyledLinkSelectContainer>
+				<StyledNavLink theme={theme} to={'/'}>Function</StyledNavLink>
+				<StyledNavLink theme={theme} to={'/cc'}>Class</StyledNavLink>
+				<div style={{marginRight: '15px', marginLeft: '15px'}}>
 					<select onChange={onChangeTheme}>
 						{themes.map((c, i) => <option key={i} value={c}>{c} Theme</option>)}
 					</select>
 				</div>
-			</div>
+			</StyledLinkSelectContainer>
 		</StyledHeader>
 	);
 };

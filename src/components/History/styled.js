@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const StyledHistory = styled.div`
-  background-color: ${props => props.theme === 'Light' ? '#e5e5e5' : '#444445'};
+  background-color: ${props => props.theme === 'Light' ? '#e5e5e5' : '#575757'};
   margin-top: 5px;
   overflow-y: auto;
   width: 100%;
+	height: 350px;
   padding: 10px;
 `
 

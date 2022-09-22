@@ -27,7 +27,7 @@ export class CalculatorCC extends React.Component {
 	onClickHandler = (el) => {
 		const expressions = /[.\-+/*]/
 		const lastNum = this.state.value[this.state.value.length - 1]
-		// try {
+		try {
 			if (expressions.test(lastNum) && expressions.test(el)) {
 
 				this.setState({value: this.state.value.substring(0, this.state.value.length - 1) + el});
@@ -46,11 +46,11 @@ export class CalculatorCC extends React.Component {
 
 			this.result(el);
 
-		// } catch (e) {
-		// 	console.log(e)
-		// 	//alert('Invalid expression');
-		// 	this.result(el, e);
-		// }
+		} catch (e) {
+			console.log(e)
+			//alert('Invalid expression');
+			this.result(el, e);
+		}
 	}
 
 	result(el, error = null) {
@@ -91,7 +91,6 @@ export class CalculatorCC extends React.Component {
 	clearOperationListHandler = () => this.props.clearOperationList();
 
 	render() {
-		console.log(this.props.theme)
 		return (
 			<ErrorBoundary>
 				<StyledCalculator>

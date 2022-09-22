@@ -15,8 +15,8 @@ export const Keypad = ({onClickHandler}) => {
 		<StyledKeypad>
 			{symbols.map((el, i) => {
 				return (
-					<Button theme={theme} key={i} onClick={() => onClickHandler(el)}>
-						{el}
+					<Button id={el.id} theme={theme} key={i} onClick={() => onClickHandler(el.sign)}>
+						{el.sign}
 					</Button>
 				)
 			})}

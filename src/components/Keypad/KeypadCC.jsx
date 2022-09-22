@@ -15,8 +15,8 @@ export class KeypadCC extends React.Component{
 			<StyledKeypad>
 				{symbols.map((el, i) => {
 					return (
-						<ButtonCC theme={theme} key={i} onClick={() => onClickHandler(el)}>
-							{el}
+						<ButtonCC id={el.id} theme={theme} key={i} onClick={() => onClickHandler(el.sign)}>
+							{el.sign}
 						</ButtonCC>
 					)
 				})}
