@@ -1,10 +1,7 @@
 import {connect} from "react-redux";
 import {StyledContainer, StyledCalculator} from "./styledComponents";
 import React from "react";
-import {DisplayCC} from "../../components/Display";
-import {KeypadCC} from "../../components/Keypad";
-import {ErrorBoundary} from "../../components";
-import {ControlPanelCC} from "../../components/ControlPanel";
+import {ControlPanelCC, DisplayCC, ErrorBoundary, KeypadCC} from "../../components";
 import {
 	addOperation,
 	clearOperationList,

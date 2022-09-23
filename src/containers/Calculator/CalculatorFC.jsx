@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
 import {useDispatch} from "react-redux";
 import {addOperation} from "../../redux";
-import {ErrorBoundary} from "../../components";
+import {ControlPanel, ErrorBoundary, Display, Keypad} from "../../components";
 import {StyledCalculator, StyledContainer} from "./styledComponents";
-import {Keypad} from "../../components/Keypad";
-import {ControlPanel} from "../../components/ControlPanel";
-import {Display} from "../../components/Display";
 
 
 export const CalculatorFC = () => {
