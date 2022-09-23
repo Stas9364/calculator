@@ -14,10 +14,10 @@ export const CalculatorFC = () => {
 	const [value, setValue] = useState('0');
 
 	const onClickHandler = (el) => {
-		const expressions = /[.\-+/*]/
-		const lastNum = value[value.length - 1]
-		try {
+		const expressions = /[.\-+/*]/;
+		const lastNum = value[value.length - 1];
 
+		try {
 			if (expressions.test(lastNum) && expressions.test(el)) {
 				setValue(value.substring(0, value.length - 1) + el);
 				return;

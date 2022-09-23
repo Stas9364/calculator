@@ -2,6 +2,7 @@ import {StyledControlPanel, StyledIMG} from "./styled";
 import React from "react";
 import {arrowLeft, arrowLeftWhite, arrowRight, arrowRightWhite} from "../../assets";
 import {HistoryCC} from "../History";
+import PropTypes from "prop-types";
 
 export class ControlPanelCC extends React.Component {
 	constructor(props) {
@@ -28,4 +29,12 @@ export class ControlPanelCC extends React.Component {
 			</StyledControlPanel>
 		)
 	}
+}
+
+ControlPanelCC.propTypes = {
+	theme: PropTypes.string,
+	isOpen: PropTypes.bool,
+	isHistoryOpenHandler: PropTypes.func,
+	operation: PropTypes.array,
+	clearOperationListHandler: PropTypes.func
 }

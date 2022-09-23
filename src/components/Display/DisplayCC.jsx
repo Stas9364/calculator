@@ -1,5 +1,6 @@
 import {StyledDisplay, StyledH1} from "./styled";
 import React from "react";
+import PropTypes from "prop-types";
 
 export class DisplayCC extends React.Component {
 	constructor(props) {
@@ -13,7 +14,11 @@ export class DisplayCC extends React.Component {
 			<StyledDisplay theme={theme}>
 				<StyledH1 theme={theme}>{val}</StyledH1>
 			</StyledDisplay>
-
 		)
 	}
+}
+
+DisplayCC.propTypes = {
+	theme: PropTypes.string,
+	val: PropTypes.string
 }

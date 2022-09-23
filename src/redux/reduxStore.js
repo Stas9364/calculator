@@ -1,5 +1,5 @@
-import {historyReducer} from "./historyReducer";
-import {settingsReducer} from "./settingsReducer";
+import {historyReducer} from "./reducers/historyReducer";
+import {settingsReducer} from "./reducers/settingsReducer";
 import {applyMiddleware, combineReducers, legacy_createStore} from "redux";
 import thunk from "redux-thunk";
 

@@ -13,7 +13,7 @@ export const ControlPanel = () => {
 	const isOpen = useSelector(isOpenSelector);
 	const theme = useSelector(themeSelector);
 
-	const isOpenHandler = () => dispatch(isHistoryOpen(!isOpen))
+	const isOpenHandler = () => dispatch(isHistoryOpen(!isOpen));
 
 	return (
 		<StyledControlPanel>

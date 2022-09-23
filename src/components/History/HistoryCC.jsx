@@ -1,5 +1,6 @@
 import {StyledHistory, StyledLine, StyledText} from "./styled";
 import React from "react";
+import PropTypes from "prop-types";
 
 export class HistoryCC extends React.Component{
 	constructor(props) {
@@ -23,4 +24,11 @@ export class HistoryCC extends React.Component{
 
 		)
 	}
+}
+
+HistoryCC.propTypes = {
+	theme: PropTypes.string,
+	operation: PropTypes.array,
+	clearOperationListHandler: PropTypes.func
+
 }

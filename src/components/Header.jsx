@@ -6,33 +6,34 @@ import {changeTheme, themeSelector, themesSelector} from "../redux";
 
 const StyledHeader = styled.div`
   display: flex;
-	justify-content: space-between;
-	height: 10vh;
-	background-color: ${props => props.theme === 'Light' ? '#D4D4D4' : '#2B3030'};
+  justify-content: space-between;
+  height: 10vh;
+  background-color: ${props => props.theme === 'Light' ? '#D4D4D4' : '#2B3030'};
 `
 
 const StyledText = styled.h1`
-	color: ${props => props.theme === 'Light' ? '#2B3030' : '#D4D4D4'};
-	margin: 0 0 0 15px;
-	display: flex;
-	align-items: center;
+  color: ${props => props.theme === 'Light' ? '#2B3030' : '#D4D4D4'};
+  margin: 0 0 0 15px;
+  display: flex;
+  align-items: center;
 `
 
 const StyledNavLink = styled(NavLink)`
   font-size: 25px;
   margin-left: 15px;
-  text-decoration: none;
   font-weight: bold;
   color: ${props => props.theme === 'Light' ? '#2B3030' : '#D4D4D4'};
+  text-decoration: none;
 
   &:hover {
     color: #756b20;
   }
+
 `
 
 const StyledLinkSelectContainer = styled.div`
-	display: flex;
-	align-items: center;
+  display: flex;
+  align-items: center;
 `
 
 export const Header = () => {

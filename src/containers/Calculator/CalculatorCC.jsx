@@ -48,7 +48,7 @@ export class CalculatorCC extends React.Component {
 
 		} catch (e) {
 			console.log(e)
-			//alert('Invalid expression');
+			alert('Invalid expression');
 			this.result(el, e);
 		}
 	}

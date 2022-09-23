@@ -2,7 +2,7 @@ const SETTINGS = {
 	CHANGE_THEME: "CHANGE_THEME"
 }
 
-const initState = {
+export const initState = {
 	themes: ['Light', 'Dark'],
 	selectedTheme: 'Light'
 };
